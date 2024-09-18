@@ -112,13 +112,13 @@ public abstract class Conta implements ITaxas, Serializable {
     }
 
     public void salvar() throws IOException{
-        File diretorio = new File("DadosContas");
+        File diretorio = new File("src/main/java/DadosContas");
         if (!diretorio.exists()) {
             diretorio.mkdir();
         }
 
         String fname = this.agencia + "-" + this.numero + ".ser";
-        FileOutputStream contaFile = new FileOutputStream("DadosContas/" + fname);
+        FileOutputStream contaFile = new FileOutputStream("src/main/java/DadosContas/" + fname);
 
         ObjectOutputStream contaSer = new ObjectOutputStream(contaFile);
 
@@ -131,7 +131,7 @@ public abstract class Conta implements ITaxas, Serializable {
 
     static public Conta carregar(String agencia, int numeroConta) throws IOException, ClassNotFoundException{
         String fname = agencia + "-" + numeroConta + ".ser";
-        FileInputStream contaFile = new FileInputStream("DadosContas/" + fname);
+        FileInputStream contaFile = new FileInputStream("src/main/java/DadosContas/" + fname);
         ObjectInputStream contaSer = new ObjectInputStream(contaFile);
 
         Conta conta = (Conta) contaSer.readObject();
